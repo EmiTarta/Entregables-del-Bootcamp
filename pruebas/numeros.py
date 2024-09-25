@@ -1,4 +1,7 @@
-numeros = [1, 2, 3]
-numeros.append(4)
-print(numeros)
+def BuscaMultiplos(numero, limite):
+    for i in range(numero,limite + 1):
+        if i % numero == 0: 
+            print (i) 
+            
 
+BuscaMultiplos(2,10)
