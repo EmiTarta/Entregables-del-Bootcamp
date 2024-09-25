@@ -3,10 +3,9 @@
 ***Martes 25*** 
 
 > Por la mañana
->
 >> Desayuno en el hotel
->> Caminata por la playa
->> Museo de Ciencias
+Caminata por la playa
+Museo de Ciencias
 >
 > Por la tarde
 >> Clase de baile
@@ -14,4 +13,4 @@
 >
 > Por la noche
 >> Cena en restaurante del Pueblo
->> Salir a bailar
+Salir a bailar
