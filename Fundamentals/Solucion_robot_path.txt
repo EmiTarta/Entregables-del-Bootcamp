@@ -1,0 +1,100 @@
+ancho = 4
+ruta = ["der", "der", "der", "aba", "izq", "izq", "izq","aba",
+        "der", "der", "der", "aba", "aba"]
+
+def robot_path(ancho,  ruta):
+    """
+    Simula el recorrido de un robot en una cuadrícula de tamaño `ancho` x `ancho`
+    siguiendo una lista de direcciones en la ruta.
+
+    El robot empieza en la posición (0, 0) de la cuadrícula y va llenando las
+    posiciones a las que se desplaza con un contador que empieza en 1.
+
+    Parámetros:
+    ----------
+    ancho : int
+        Tamaño de la cuadrícula (número de filas y columnas). Debe ser cuadrada.
+    ruta : list
+        Lista de direcciones que el robot seguirá. Puede contener:
+        - "der" (derecha)
+        - "izq" (izquierda)
+        - "aba" (abajo)
+        - "arr" (arriba)
+
+    Retorna:
+    -------
+    list
+        Una matriz de tamaño `ancho` x `ancho` con los pasos del robot registrados,
+        o una matriz parcial si el robot se sale de los límites.
+
+    Nota:
+    -----
+    Si el robot intenta moverse fuera de los límites de la cuadrícula,
+    el programa devuelve la matriz en ese momento y termina.
+    """
+
+    # Inicializa una matriz vacía de ceros del tamaño especificado
+    matrix = []
+
+    # Rellenamos la matriz con ceros según el ancho proporcionado
+    for indice_fila in range(ancho):
+        matrix.append([])  # Añade una nueva fila vacía
+        for indice_columna in range(ancho):
+            matrix[indice_fila].append(0)  # Llena cada fila con ceros
+
+    # Empezamos en la posición (0, 0) y el contador inicial es 1
+    contador = 1
+    posicion = [0, 0]
+    
+    # Marca la posición inicial del robot en la matriz
+    matrix[posicion[0]][posicion[1]] = contador
+
+    # Itera sobre cada dirección en la ruta
+    for direccion in ruta:
+        # Comprueba cada posible dirección
+        if direccion == "der":  # Si la dirección es "derecha"
+            posicion[1] += 1  # Mueve el robot a la derecha (columna +1)
+            
+            # Si se sale de los límites de la derecha
+            if posicion[1] == ancho:
+                print("te has pasado para la derecha")
+                return matrix  # Devuelve la matriz en su estado actual
+            
+            contador += 1  # Incrementa el contador de pasos
+            matrix[posicion[0]][posicion[1]] = contador  # Marca la nueva posición
+
+        elif direccion == "aba":  # Si la dirección es "abajo"
+            posicion[0] += 1  # Mueve el robot hacia abajo (fila +1)
+            
+            # Si se sale de los límites hacia abajo
+            if posicion[0] == ancho:
+                print("te has pasado para abajo")
+                return matrix  # Devuelve la matriz en su estado actual
+            
+            contador += 1  # Incrementa el contador de pasos
+            matrix[posicion[0]][posicion[1]] = contador  # Marca la nueva posición
+
+        elif direccion == "izq":  # Si la dirección es "izquierda"
+            posicion[1] -= 1  # Mueve el robot a la izquierda (columna -1)
+            
+            # Si se sale de los límites de la izquierda
+            if posicion[1] < 0:
+                print("te has pasado para la izquierda")
+                return matrix  # Devuelve la matriz en su estado actual
+            
+            contador += 1  # Incrementa el contador de pasos
+            matrix[posicion[0]][posicion[1]] = contador  # Marca la nueva posición
+
+        elif direccion == "arr":  # Si la dirección es "arriba"
+            posicion[0] -= 1  # Mueve el robot hacia arriba (fila -1)
+            
+            # Si se sale de los límites hacia arriba
+            if posicion[0] < 0:
+                print("te has pasado para arriba")
+                return matrix  # Devuelve la matriz en su estado actual
+            
+            contador += 1  # Incrementa el contador de pasos
+            matrix[posicion[0]][posicion[1]] = contador  # Marca la nueva posición
+
+    # Devuelve la matriz final con todas las posiciones marcadas
+    return matrix
